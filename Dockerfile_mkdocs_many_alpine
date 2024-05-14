@@ -27,12 +27,10 @@ RUN pip install mkdocs-dracula-theme
 RUN pip install mkdocs-bootstrap
 RUN pip install mkdocs-simple-blog
 RUN pip install mkdocs-terminal
-RUN pip install lantana
 RUN pip install mkdocs-swan
 RUN pip install mkdocs-ivory
 RUN pip install mkdocs-kpn
 RUN pip install mkdocs-custommill
-RUN pip install mkdocs-	
 RUN pip install mkdocs-theme-bootstrap4
 RUN pip install mkdocs-alabaster
 RUN pip install mkdocs-windmill
