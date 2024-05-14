@@ -1,0 +1,25 @@
+docker build -t my_mkdocs:v2 --build-arg=USER=$(id -u) .
+
+docker run -it my_mkdocs:v2 --help
+
+mkdir /tmp/pdoc2
+docker run -it -v /tmp/pdoc2:/build my_mkdocs:v2 new /build
+
+docker run -it --entrypoint=/bin/bash my_mkdocs:v2
+
+docker run -it -p 8123:8000 \
+-v /tmp/pdoc2:/build my_mkdocs:v2 \
+serve --dev-addr 0.0.0.0:8000 \
+--config-file /build/mkdocs.yml
+
+
+mkdir $PWD/pdoc2
+docker run -it -v $PWD/pdoc2:/build my_mkdocs:v2 new /build
+
+docker run -it --entrypoint=/bin/bash my_mkdocs:v2
+
+docker run -it -p 8123:8000 \
+-v $PWD/pdoc2:/build my_mkdocs:v2 \
+serve --dev-addr 0.0.0.0:8000 \
+--config-file /build/mkdocs.yml
+
