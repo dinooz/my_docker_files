@@ -1,0 +1,51 @@
+FROM python:3-alpine
+
+ARG USER=1001
+
+RUN adduser -h /usr/src/mkdocs -D -u $USER mkdocs \
+&& apk add bash \
+&& apk add git 
+
+ENV PATH="${PATH}:/usr/src/mkdocs/.local/bin"
+
+USER mkdocs
+RUN mkdir -p /usr/src/mkdocs/build
+WORKDIR /usr/src/mkdocs/build
+
+RUN pip install --upgrade pip
+
+RUN pip install pymdown-extensions \
+&& pip install mkdocs \
+&& pip install mkdocs-material \
+&& pip install mkdocs-rtd-dropdown \
+&& pip install mkdocs-git-revision-date-plugin \
+&& pip install mkdocs-git-revision-date-localized-plugin
+RUN pip install mkdocs-material
+RUN pip install mkdocs-cinder
+RUN pip install mkdocs-bootswatch
+RUN pip install mkdocs-dracula-theme
+RUN pip install mkdocs-bootstrap
+RUN pip install mkdocs-simple-blog
+RUN pip install mkdocs-terminal
+RUN pip install lantana
+RUN pip install mkdocs-swan
+RUN pip install mkdocs-ivory
+RUN pip install mkdocs-kpn
+RUN pip install mkdocs-custommill
+RUN pip install mkdocs-	
+RUN pip install mkdocs-theme-bootstrap4
+RUN pip install mkdocs-alabaster
+RUN pip install mkdocs-windmill
+RUN pip install mkdocs-windmill-dark
+RUN pip install mkdocs-gitbook
+
+RUN pip install mkdocs-bootstrap386
+
+RUN pip install mkdocs-nature
+RUN pip install mkdocs-moonstone
+RUN pip install mkdocs-risonia-theme
+RUN pip install mkdocs-theme-topdf
+RUN pip install mkdocs-github
+RUN pip install mkdocs-cluster
+
+ENTRYPOINT ["/usr/src/mkdocs/.local/bin/mkdocs"]
